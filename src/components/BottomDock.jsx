@@ -13,11 +13,11 @@ function BottomDock() {
           placeholder="Enter Prompt Here..."
           className="bg-zinc-800 rounded-full p-4 w-[40vw]"
         />
-        <button className="m-2 text-xl">
+        <button type="button" className="m-2 text-xl">
           <FiMic />
         </button>
 
-        <button className="mx-4 text-xl">
+        <button type="button" className="mx-4 text-xl">
           <FiImage />
         </button>
       </form>

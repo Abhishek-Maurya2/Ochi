@@ -6,6 +6,7 @@ import {
   FiRotateCcw,
   FiSettings,
 } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 function SideNav() {
   const [sideBar, setSideBar] = useState(false);

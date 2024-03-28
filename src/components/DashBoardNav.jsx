@@ -1,7 +1,12 @@
 import React from "react";
 import { FiSearch, FiUser } from "react-icons/fi";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "../Auth/LoginButton";
+import LogoutButton from "../Auth/LogoutButton";
 
 function DashBoardNav() {
+  
+  const { user, isAuthenticated, isLoading } = useAuth0();
   return (
     <nav className="relative flex justify-between items-cente px-6 py-2 w-full text-white">
       <p className="text-2xl font-bold">Luna</p>
@@ -13,11 +18,21 @@ function DashBoardNav() {
         />
         <FiSearch />
       </div>
-      <img
-        src="https:///via.placeholder.com/150"
-        alt="profile"
-        className="w-10 h-10 rounded-full"
-      />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : isAuthenticated ? (
+        <div className="flex items-center gap-2">
+          <img
+            src={user.picture}
+            alt={user.name}
+            className="w-8 h-8 rounded-full"
+          />
+          <p className="ml-2">{user.name}</p>
+          <LogoutButton />
+        </div>
+      ) : (
+        <LoginButton />
+      )}
     </nav>
   );
 }
